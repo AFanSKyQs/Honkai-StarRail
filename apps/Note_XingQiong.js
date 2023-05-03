@@ -16,10 +16,10 @@ export class Note_XingQiong extends plugin {
             priority: 300,
             rule: [
                 {
-                    reg: '^\\**(星穹|星琼|原石|石头)$',
+                    reg: '^\\*(*|＊)(星穹|星琼|原石|石头)$',
                     fnc: 'ledger'
                 }, {
-                    reg: '^\\**(体力|开拓力)$',
+                    reg: '^\\*(*|＊)(体力|开拓力)$',
                     fnc: 'Note'
                 },
             ]
