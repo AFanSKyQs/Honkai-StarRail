@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/Note/Note.css"/>
+    <title>星穹铁道开拓力</title>
+    <style>
+        /* 背景图片样式 */
+        body {
+            /*width: 720px;*/
+            /*height: 500px;*/
+            background-image: url({{pluResPath}}img/other/NoteBg.png);
+            /*background-size: 100% 100%;*/
+            overflow: hidden;
+            padding: 10px 25px;
+
+            /*background-image: url('https://i.imgtg.com/2023/05/03/CO2cj.webp');*/
+            background-size: 1150px auto;
+            font-family: tttgbnumber;
+            transform: scale(1.2);
+            transform-origin: 0 0;
+        }
+
+        /* 外层圆角方框样式 */
+        #outer-box {
+            margin: 30px;
+            background-color: rgba(225, 212, 236, 0.47);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            /* 毛玻璃效果 */
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 头像样式 */
+        .avatar {
+            display: block;
+            margin: 5px auto;
+            width: 80px;
+            height: 80px;
+            background-image: url('头像图片地址');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        /* UID样式 */
+        #uid {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* 体力样式 */
+        #stamina {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: rgba(25, 0, 255, 0.6);
+            font-size: 25px;
+        }
+
+        /* 内层圆角方框样式 */
+        .inner-box {
+            margin: 20px 50px;
+            background-color: rgba(170, 0, 255, 0.11);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 每个派遣任务样式 */
+        .expedition {
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* 每行数据样式 */
+        .row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* 行内头像样式 */
+        .row .avatar {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        /* 行内描述文字样式 */
+        .row .description {
+            flex: 1;
+            text-align: right;
+            font-size: 25px;
+            font-weight: 540;
+        }
+
+        .rainbow-text {
+            background: -webkit-linear-gradient(45deg, #ff0000, #ff8000, #ff8000, #00d9ff, #0080ff, #8000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 5s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        .stamina-value {
+            color: rgba(25, 0, 255, 1);
+        }
+    </style>
+</head>
+<body>
+<div id="outer-box">
+    <img class="avatar" src="https://q1.qlogo.cn/g?b=qq&nk={{QQ}}&s=160" alt="头像">
+    <div id="uid" class="rainbow-text">UID:{{uid}}</div>
+    <div id="stamina">开拓力：<span class="stamina-value">{{current_stamina}}</span> / {{max_stamina}}
+        <div>全部恢复：{{stamina_recover_time}}</div>
+    </div>
+    <div class="inner-box">
+        {{each expeditions val}}
+        <div class="expedition">
+            <div class="row">
+                {{each val.avatars val2}}
+                <img class="avatar" src="{{val2}}" alt="派遣角色">
+                {{/each}}
+                <div class="description">{{val.name}} | {{val.remaining_time}}</div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+</body>
+</html>
